@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Plus Móvil | Tarija Bolivia — Transporte de Confianza 24/7</title>
+<meta name="description" content="Plus Móvil — El servicio de taxi, ejecutivo, delivery y tours más confiable de Tarija, Bolivia. +80 unidades, 9 años, disponibles 24/7."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #FFB820;
+  --gold2: #FF9500;
+  --navy: #060D2E;
+  --navy2: #0A1650;
+  --blue: #1A47C8;
+  --blue2: #2563EB;
+  --electric: #00CFFF;
+  --white: #FFFFFF;
+  --gray: #8899BB;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--navy);
+  color:#fff;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ═══ CUSTOM CURSOR ═══ */
+.cursor-dot{
+  width:8px;height:8px;
+  background:var(--gold);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  transition:transform .1s;
+}
+.cursor-ring{
+  width:36px;height:36px;
+  border:2px solid rgba(255,184,32,.5);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9998;
+  transition:transform .15s ease, width .3s, height .3s, border-color .3s;
+}
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px;}
+
+/* ═══ NOISE OVERLAY ═══ */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.4;
+}
+
+/* ═══ NAVBAR ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,13,46,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,184,32,.15);
+  transition:padding .3s;
+}
+nav.scrolled{padding:.7rem 1.5rem;}
+.nav-logo{height:42px;width:auto;}
+.nav-links{display:none;gap:2rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-weight:600;font-size:.9rem;letter-spacing:.04em;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);font-weight:800;font-size:.85rem;
+  padding:.65rem 1.4rem;border-radius:100px;
+  text-decoration:none;letter-spacing:.03em;
+  transition:transform .2s,box-shadow .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,184,32,.4);}
+.hamburger{
+  background:none;border:none;cursor:pointer;
+  display:flex;flex-direction:column;gap:5px;padding:4px;
+}
+.hamburger span{
+  display:block;width:24px;height:2px;
+  background:var(--gold);border-radius:2px;
+  transition:transform .3s,opacity .3s;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(6,13,46,.97);
+  z-index:99;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{
+  color:#fff;text-decoration:none;
+  font-size:2rem;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.1em;
+  transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--gold);}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;align-items:center;
+  overflow:hidden;
+  padding-top:70px;
+}
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('https://i.postimg.cc/8kMFTYg9/FB-IMG-1776777587209.jpg') center/cover no-repeat;
+  filter:brightness(.35) saturate(1.2);
+  transform:scale(1.05);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1.05);}to{transform:scale(1.12);}}
+
+/* Gradient overlays */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right, rgba(6,13,46,.95) 0%, rgba(6,13,46,.7) 55%, transparent 100%),
+    linear-gradient(to top, rgba(6,13,46,1) 0%, transparent 40%);
+}
+/* Animated grid lines */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,184,32,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,184,32,.06) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove{from{background-position:0 0;}to{background-position:60px 60px;}}
+
+/* Floating orbs */
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);
+  animation:orbFloat 8s ease-in-out infinite;
+  pointer-events:none;
+}
+.orb1{width:400px;height:400px;background:rgba(255,149,0,.12);top:-100px;right:-100px;animation-delay:0s;}
+.orb2{width:300px;height:300px;background:rgba(0,207,255,.1);bottom:0;right:20%;animation-delay:-3s;}
+.orb3{width:200px;height:200px;background:rgba(26,71,200,.2);top:30%;left:-50px;animation-delay:-5s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+
+.hero-content{
+  position:relative;z-index:2;
+  padding:2rem 1.5rem 4rem;
+  max-width:700px;
+}
+
+/* Live badge */
+.live-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,255,100,.12);
+  border:1px solid rgba(0,255,100,.35);
+  border-radius:100px;
+  padding:.35rem 1rem;
+  font-size:.75rem;font-weight:700;
+  color:#00ff64;
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  animation:fadeSlideDown .8s ease both;
+}
+.live-dot{
+  width:7px;height:7px;background:#00ff64;border-radius:50%;
+  animation:livePulse 1.5s ease infinite;
+}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,100,.5);}50%{box-shadow:0 0 0 6px rgba(0,255,100,0);}}
+
+/* Hero title */
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,14vw,8rem);
+  line-height:.95;
+  letter-spacing:.02em;
+  margin-bottom:1rem;
+  animation:fadeSlideUp .9s ease .2s both;
+}
+.hero-title .line2{
+  -webkit-text-stroke:2px var(--gold);
+  color:transparent;
+  display:block;
+}
+.hero-title .line3{
+  background:linear-gradient(90deg,var(--gold),var(--electric),var(--gold));
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmerText 3s linear infinite;
+  display:block;
+}
+@keyframes shimmerText{from{background-position:0% center;}to{background-position:200% center;}}
+
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.7);
+  line-height:1.7;max-width:480px;
+  margin-bottom:2rem;
+  animation:fadeSlideUp .9s ease .4s both;
+  font-weight:400;
+}
+.hero-sub strong{color:var(--gold);font-weight:700;}
+
+/* CTA group */
+.hero-ctas{
+  display:flex;flex-direction:column;gap:.9rem;
+  margin-bottom:2.5rem;
+  animation:fadeSlideUp .9s ease .6s both;
+}
+@media(min-width:500px){.hero-ctas{flex-direction:row;flex-wrap:wrap;}}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.7rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--navy);font-weight:800;font-size:1rem;
+  padding:1rem 1.8rem;border-radius:100px;
+  text-decoration:none;letter-spacing:.02em;
+  position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+  border:none;cursor:pointer;
+  animation:pulseCTA 3s ease infinite;
+}
+@keyframes pulseCTA{0%,100%{box-shadow:0 0 0 0 rgba(255,184,32,.5);}50%{box-shadow:0 0 0 14px rgba(255,184,32,0);}}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 40px rgba(255,184,32,.45);}
+.btn-primary::after{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  animation:shine 3s ease infinite;
+}
+@keyframes shine{0%,100%{left:-100%;}40%,60%{left:150%;}}
+
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:.7rem;
+  border:2px solid rgba(255,184,32,.5);
+  color:var(--gold);font-weight:700;font-size:1rem;
+  padding:1rem 1.8rem;border-radius:100px;
+  text-decoration:none;
+  transition:all .25s;
+  backdrop-filter:blur(8px);
+  background:rgba(255,184,32,.05);
+}
+.btn-secondary:hover{background:rgba(255,184,32,.15);border-color:var(--gold);transform:translateY(-2px);}
+
+/* Hero stats pills */
+.hero-stats{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  animation:fadeSlideUp .9s ease .8s both;
+}
+.stat-pill{
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:100px;padding:.5rem 1rem;
+  backdrop-filter:blur(8px);
+}
+.stat-pill .num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);line-height:1;}
+.stat-pill .label{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:500;line-height:1.2;}
+
+/* ═══ TICKER ═══ */
+.ticker-wrap{
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+  background-size:200% auto;
+  animation:shimmerText 4s linear infinite;
+  padding:.6rem 0;overflow:hidden;
+  position:relative;z-index:2;
+}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 25s linear infinite;}
+.ticker-item{padding:0 2rem;font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);}
+.ticker-sep{opacity:.4;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ═══ SECTIONS COMMON ═══ */
+section{position:relative;z-index:2;}
+.section-pad{padding:5rem 1.5rem;}
+.section-label{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+}
+.section-label::before,.section-label::after{content:'';width:24px;height:2px;background:var(--gold);border-radius:2px;}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,8vw,5rem);
+  line-height:1;letter-spacing:.03em;
+  margin-bottom:1rem;
+}
+.section-title .accent{color:var(--gold);}
+.section-sub{color:var(--gray);font-size:1rem;line-height:1.7;max-width:560px;}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.up{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-left.up{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-right.up{opacity:1;transform:translateX(0);}
+
+/* ═══ SERVICES ═══ */
+.services-bg{background:var(--navy2);}
+.services-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:rgba(255,184,32,.1);
+  border:1px solid rgba(255,184,32,.1);
+  border-radius:20px;overflow:hidden;
+  margin-top:3rem;
+}
+@media(min-width:640px){.services-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.services-grid{grid-template-columns:repeat(4,1fr);}}
+
+.srv-card{
+  background:var(--navy2);
+  padding:2rem 1.8rem;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+  cursor:default;
+}
+.srv-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,184,32,.08),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.srv-card:hover{background:rgba(255,184,32,.06);}
+.srv-card:hover::before{opacity:1;}
+.srv-icon{font-size:3rem;margin-bottom:1.2rem;display:block;transition:transform .3s;}
+.srv-card:hover .srv-icon{transform:scale(1.15) rotate(-5deg);}
+.srv-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;color:#fff;margin-bottom:.5rem;}
+.srv-desc{color:var(--gray);font-size:.88rem;line-height:1.6;}
+.srv-tag{
+  display:inline-block;margin-top:1.2rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(255,184,32,.3);
+  padding:.25rem .75rem;border-radius:100px;
+}
+
+/* ═══ GALLERY FULL ═══ */
+.gallery-section{background:var(--navy);}
+.gallery-hero{
+  width:100%;height:60vw;max-height:500px;
+  object-fit:cover;border-radius:16px;
+  display:block;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;margin-top:1rem;
+}
+.gallery-grid img{
+  width:100%;aspect-ratio:16/10;object-fit:cover;
+  border-radius:12px;display:block;
+  transition:transform .4s ease,filter .4s;
+  filter:brightness(.9) saturate(1.1);
+}
+.gallery-grid img:hover{transform:scale(1.03);filter:brightness(1) saturate(1.3);}
+.gallery-overlay-card{
+  position:relative;border-radius:16px;overflow:hidden;margin-top:3rem;
+}
+.gallery-overlay-card img{width:100%;height:280px;object-fit:cover;display:block;}
+.gallery-overlay-card .card-text{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,13,46,.95) 0%,rgba(6,13,46,.4) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;
+}
+
+/* ═══ WHO WE ARE ═══ */
+.who-bg{
+  background:var(--navy2);
+  position:relative;overflow:hidden;
+}
+.who-bg::before{
+  content:'';position:absolute;
+  top:-200px;right:-200px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,184,32,.07) 0%,transparent 70%);
+  border-radius:50%;
+}
+.timeline{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
+.tl-item{display:flex;gap:1rem;align-items:flex-start;}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;margin-top:5px;
+  box-shadow:0 0 0 4px rgba(255,184,32,.2),0 0 0 8px rgba(255,184,32,.08);
+}
+.tl-dot.blue{background:var(--electric);box-shadow:0 0 0 4px rgba(0,207,255,.2),0 0 0 8px rgba(0,207,255,.08);}
+.tl-year{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gold);letter-spacing:.05em;}
+.tl-text{color:var(--gray);font-size:.88rem;line-height:1.6;}
+
+/* Stats grid */
+.stats-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;
+}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+.stat-box{
+  background:rgba(255,184,32,.06);
+  border:1px solid rgba(255,184,32,.18);
+  border-radius:16px;padding:1.5rem 1rem;text-align:center;
+  transition:transform .3s,border-color .3s;
+}
+.stat-box:hover{transform:translateY(-4px);border-color:rgba(255,184,32,.45);}
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;letter-spacing:.03em;
+  background:linear-gradient(135deg,var(--gold),var(--electric));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.stat-lbl{color:var(--gray);font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+
+/* ═══ MISSION / VISION ═══ */
+.mv-bg{background:var(--navy);}
+.mv-grid{
+  display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;
+}
+@media(min-width:768px){.mv-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.mv-grid{grid-template-columns:1fr 1fr 1fr;}}
+
+.mv-card{
+  border-radius:20px;padding:2rem;
+  position:relative;overflow:hidden;
+  transition:transform .3s;
+}
+.mv-card:hover{transform:translateY(-6px);}
+.mv-card.mission{
+  background:linear-gradient(135deg,rgba(255,184,32,.12),rgba(255,149,0,.05));
+  border:1px solid rgba(255,184,32,.25);
+}
+.mv-card.vision{
+  background:linear-gradient(135deg,rgba(0,207,255,.1),rgba(26,71,200,.05));
+  border:1px solid rgba(0,207,255,.2);
+}
+.mv-card.values{
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.1);
+}
+@media(min-width:768px){.mv-card.values{grid-column:span 2;}}
+@media(min-width:1024px){.mv-card.values{grid-column:span 1;}}
+
+.mv-emoji{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.mv-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:.05em;margin-bottom:.8rem;
+}
+.mv-card.mission .mv-title{color:var(--gold);}
+.mv-card.vision .mv-title{color:var(--electric);}
+.mv-card.values .mv-title{color:#fff;}
+.mv-text{color:var(--gray);font-size:.9rem;line-height:1.7;}
+.values-list{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem;}
+.values-list li{
+  display:flex;align-items:center;gap:.7rem;
+  color:rgba(255,255,255,.8);font-size:.88rem;font-weight:500;
+}
+.values-list li::before{
+  content:'✓';
+  width:22px;height:22px;
+  background:rgba(255,184,32,.15);border:1px solid rgba(255,184,32,.3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:900;color:var(--gold);flex-shrink:0;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.testi-bg{
+  background:var(--navy2);
+  position:relative;overflow:hidden;
+}
+.testi-bg::after{
+  content:'';position:absolute;
+  bottom:-200px;left:-200px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(0,207,255,.06) 0%,transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.testi-grid{
+  display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;
+}
+@media(min-width:768px){.testi-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.testi-grid{grid-template-columns:1fr 1fr 1fr;}}
+
+.testi-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:2rem;
+  position:relative;
+  transition:border-color .3s,transform .3s;
+}
+.testi-card:hover{border-color:rgba(255,184,32,.3);transform:translateY(-4px);}
+.testi-quote{
+  font-size:3rem;color:var(--gold);opacity:.3;
+  font-family:'Bebas Neue',sans-serif;
+  line-height:1;margin-bottom:.5rem;
+}
+.testi-text{color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;}
+.testi-stars{color:var(--gold);font-size:.9rem;margin-bottom:1rem;letter-spacing:2px;}
+.testi-author{
+  display:flex;align-items:center;gap:.8rem;
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:1rem;
+}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;color:var(--navy);font-size:.9rem;flex-shrink:0;
+}
+.testi-name{font-weight:700;font-size:.88rem;}
+.testi-role{color:var(--gray);font-size:.76rem;}
+
+/* ═══ HOW TO ORDER ═══ */
+.how-bg{background:var(--navy);}
+.how-steps{
+  display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;
+}
+@media(min-width:768px){.how-steps{grid-template-columns:1fr 1fr 1fr;}}
+
+.step-card{
+  position:relative;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:2rem 1.5rem;
+  text-align:center;
+  transition:transform .3s,border-color .3s;
+}
+.step-card:hover{transform:translateY(-6px);border-color:rgba(255,184,32,.3);}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:5rem;line-height:1;
+  color:rgba(255,184,32,.12);
+  position:absolute;top:.5rem;right:1rem;
+}
+.step-icon{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:.5rem;}
+.step-text{color:var(--gray);font-size:.88rem;line-height:1.6;}
+
+/* WA buttons */
+.wa-buttons{
+  display:flex;flex-direction:column;gap:.9rem;
+  margin-top:2.5rem;
+  align-items:center;
+}
+@media(min-width:500px){.wa-buttons{flex-direction:row;justify-content:center;flex-wrap:wrap;}}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:#1DB954;
+  color:#fff;font-weight:700;font-size:.9rem;
+  padding:.85rem 1.5rem;border-radius:100px;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  letter-spacing:.02em;
+}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(29,185,84,.35);}
+.wa-btn svg{width:20px;height:20px;flex-shrink:0;}
+
+/* ═══ FAQ ═══ */
+.faq-bg{background:var(--navy2);}
+.faq-list{display:flex;flex-direction:column;gap:.8rem;margin-top:3rem;}
+.faq-item{
+  border:1px solid rgba(255,184,32,.15);
+  border-radius:14px;overflow:hidden;
+  transition:border-color .3s;
+}
+.faq-item:hover{border-color:rgba(255,184,32,.35);}
+.faq-q{
+  width:100%;background:none;border:none;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem 1.5rem;cursor:pointer;
+  text-align:left;gap:1rem;
+}
+.faq-q span{font-weight:700;color:#fff;font-size:.95rem;}
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,184,32,.12);border:1px solid rgba(255,184,32,.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.2rem;font-weight:300;line-height:1;
+  transition:transform .35s,background .3s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(255,184,32,.25);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease;
+}
+.faq-a-inner{
+  padding:0 1.5rem 1.3rem;
+  color:var(--gray);font-size:.88rem;line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:300px;}
+
+/* ═══ RECRUIT ═══ */
+.recruit-bg{
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(135deg,#0A1650 0%,#060D2E 50%,#0A1A60 100%);
+}
+.recruit-bg::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://i.postimg.cc/g07w0FJX/FB-IMG-1776777628513.jpg') center/cover no-repeat;
+  opacity:.12;filter:saturate(1.5);
+}
+.recruit-shine{
+  position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,184,32,.12) 0%,transparent 70%);
+  border-radius:50%;
+  animation:orbFloat 8s ease-in-out infinite;
+}
+.recruit-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;}
+.recruit-perks{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  margin:2rem 0;
+}
+@media(min-width:640px){.recruit-perks{grid-template-columns:repeat(4,1fr);}}
+.perk{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:1.2rem .8rem;text-align:center;
+  transition:transform .3s,background .3s;
+}
+.perk:hover{transform:translateY(-4px);background:rgba(255,184,32,.1);border-color:rgba(255,184,32,.25);}
+.perk-icon{font-size:1.8rem;margin-bottom:.5rem;display:block;}
+.perk-text{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.8);}
+
+/* ═══ CONTACT ═══ */
+.contact-bg{background:var(--navy);}
+.contact-grid{
+  display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem;
+}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr 1fr;}}
+.contact-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:2rem;
+  transition:border-color .3s,transform .3s;
+}
+.contact-card:hover{border-color:rgba(255,184,32,.3);transform:translateY(-4px);}
+.contact-icon{font-size:2rem;margin-bottom:1rem;display:block;}
+.contact-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;margin-bottom:.8rem;}
+.contact-text{color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:1.2rem;}
+.social-link{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.8rem 1rem;border-radius:12px;
+  text-decoration:none;
+  transition:background .2s,transform .2s;
+  font-weight:600;font-size:.88rem;margin-bottom:.5rem;
+}
+.social-link:hover{transform:translateX(4px);}
+.social-link.fb{background:rgba(24,119,242,.1);border:1px solid rgba(24,119,242,.2);color:#60A5FA;}
+.social-link.fb:hover{background:rgba(24,119,242,.2);}
+.social-link.tt{background:rgba(255,0,80,.1);border:1px solid rgba(255,0,80,.15);color:#F9A8D4;}
+.social-link.tt:hover{background:rgba(255,0,80,.18);}
+.social-link.gm{background:rgba(234,67,53,.1);border:1px solid rgba(234,67,53,.15);color:#FCA5A5;}
+.social-link.gm:hover{background:rgba(234,67,53,.18);}
+.avail-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.25);
+  border-radius:100px;padding:.5rem 1rem;
+  font-size:.8rem;font-weight:700;color:#4ADE80;margin-top:.5rem;
+}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:var(--navy2);
+  border-top:1px solid rgba(255,184,32,.12);
+  padding:3.5rem 1.5rem 2rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1200px;margin:0 auto;
+}
+@media(min-width:768px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1.2fr;}}
+.footer-logo{height:50px;width:auto;margin-bottom:1rem;}
+.footer-desc{color:var(--gray);font-size:.85rem;line-height:1.7;max-width:260px;margin-bottom:1.2rem;}
+.footer-socials{display:flex;gap:.7rem;}
+.footer-social-btn{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.1);
+  transition:transform .2s,border-color .2s;
+}
+.footer-social-btn:hover{transform:translateY(-3px);}
+.footer-social-btn.fb{background:rgba(24,119,242,.15);color:#60A5FA;}
+.footer-social-btn.tt{background:rgba(255,0,80,.15);color:#F9A8D4;}
+.footer-social-btn.gm{background:rgba(234,67,53,.15);color:#FCA5A5;}
+.footer-col-title{font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-links a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-contact-item{
+  display:flex;align-items:center;gap:.6rem;
+  color:var(--gray);font-size:.85rem;margin-bottom:.65rem;
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-contact-item:hover{color:var(--gold);}
+.footer-bottom{
+  max-width:1200px;margin:2.5rem auto 0;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;flex-direction:column;gap:1.2rem;align-items:center;
+  text-align:center;
+}
+@media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between;text-align:left;}}
+.footer-copy{color:var(--gray);font-size:.8rem;line-height:1.6;}
+.koffyz-badge{
+  display:flex;align-items:center;gap:.75rem;
+  background:rgba(139,92,246,.12);
+  border:1px solid rgba(139,92,246,.25);
+  border-radius:12px;padding:.65rem 1.1rem;
+  text-decoration:none;
+  transition:all .3s;
+}
+.koffyz-badge:hover{background:rgba(139,92,246,.22);border-color:rgba(139,92,246,.5);transform:translateY(-2px);}
+.koffyz-logo{width:32px;height:32px;object-fit:contain;border-radius:8px;}
+.koffyz-text{display:flex;flex-direction:column;}
+.koffyz-by{font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;}
+.koffyz-name{font-size:.85rem;font-weight:800;color:#C4B5FD;}
+
+/* ═══ FLOATING WA ═══ */
+.wa-float{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+  animation:waFloat 2.5s ease-in-out infinite;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes waFloat{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 0 rgba(37,211,102,.4);}
+  50%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 14px rgba(37,211,102,0);}
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══ DESKTOP ═══ */
+@media(min-width:768px){
+  .nav-links{display:flex;}
+  .hamburger{display:none;}
+  .section-pad{padding:7rem 4rem;}
+  .hero-content{padding:2rem 4rem 5rem;}
+}
+@media(min-width:1200px){
+  .section-pad{padding:7rem 6rem;}
+  .hero-content{padding:2rem 6rem 5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#inicio"    class="mob-link">Inicio</a>
+  <a href="#servicios" class="mob-link">Servicios</a>
+  <a href="#galeria"   class="mob-link">Galería</a>
+  <a href="#nosotros"  class="mob-link">Nosotros</a>
+  <a href="#faq"       class="mob-link">FAQ</a>
+  <a href="#contacto"  class="mob-link">Contacto</a>
+  <a href="https://wa.me/59177877727" target="_blank" class="btn-primary" style="margin-top:1rem;font-size:1.1rem;">
+    📱 Pedir móvil
+  </a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#inicio"><img src="https://i.postimg.cc/Jh56wx4j/1776778016479.png" alt="Plus Móvil" class="nav-logo"/></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#mision">Misión</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/59177877727" target="_blank" class="nav-cta">📱 Pedir móvil</a>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-content">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      Disponible ahora · 24/7
+    </div>
+
+    <h1 class="hero-title">
+      Tu viaje
+      <span class="line2">SEGURO</span>
+      <span class="line3">A TIEMPO.</span>
+    </h1>
+
+    <p class="hero-sub">
+      <strong>9 años</strong> conectando Tarija con excelencia.
+      Taxi · Ejecutivo · Delivery · Tours.<br/>
+      <strong>+80 unidades</strong> listas para vos ahora mismo.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/59177877727?text=Hola%20Plus%20M%C3%B3vil,%20quiero%20un%20m%C3%B3vil%20ya!" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#060D2E"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        ¡Solicita tu móvil ya!
+      </a>
+      <a href="#servicios" class="btn-secondary">Ver servicios →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <span class="num counter" data-target="80" data-suffix="+">0+</span>
+        <span class="label">Unidades<br/>activas</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num counter" data-target="9" data-suffix=" años">0 años</span>
+        <span class="label">De<br/>experiencia</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" style="font-size:1.1rem;font-family:'Bebas Neue',sans-serif;color:var(--gold)">24/7</span>
+        <span class="label">Siempre<br/>disponibles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">✓ GATM Certificado</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ NIT en Regla</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ SOAT Vigente</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ Conductores TIC</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ +80 Unidades</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ 9 Años en Tarija</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ Atención 24/7</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ 100% Legal</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <!-- duplicate -->
+    <span class="ticker-item">✓ GATM Certificado</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ NIT en Regla</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ SOAT Vigente</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ Conductores TIC</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ +80 Unidades</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ 9 Años en Tarija</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ Atención 24/7</span>
+    <span class="ticker-item ticker-sep">•</span>
+    <span class="ticker-item">✓ 100% Legal</span>
+    <span class="ticker-item ticker-sep">•</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     SERVICIOS
+════════════════════════════ -->
+<section id="servicios" class="section-pad services-bg">
+  <div class="reveal">
+    <div class="section-label">Lo que hacemos</div>
+    <h2 class="section-title">Servicios que<br/><span class="accent">te mueven</span></h2>
+    <p class="section-sub">Desde una carrera rápida hasta un tour por los rincones más increíbles de Tarija — siempre con profesionalismo.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="srv-card">
+      <span class="srv-icon">🚖</span>
+      <div class="srv-title">Taxi / Remis</div>
+      <p class="srv-desc">Carreras rápidas dentro de Tarija. Pedí tu móvil en segundos, un conductor llega a tu puerta.</p>
+      <span class="srv-tag">⚡ Respuesta inmediata</span>
+    </div>
+    <div class="srv-card">
+      <span class="srv-icon">💼</span>
+      <div class="srv-title">Servicio Ejecutivo</div>
+      <p class="srv-desc">Vehículos premium y conductores formales para reuniones, aeropuerto y traslados corporativos.</p>
+      <span class="srv-tag">⭐ Confort premium</span>
+    </div>
+    <div class="srv-card">
+      <span class="srv-icon">📦</span>
+      <div class="srv-title">Delivery & Encomiendas</div>
+      <p class="srv-desc">Paquetes, documentos y encargos entregados con seguridad. Aliados de hoteles, clínicas y empresas.</p>
+      <span class="srv-tag">🔒 Entrega segura</span>
+    </div>
+    <div class="srv-card">
+      <span class="srv-icon">🗺️</span>
+      <div class="srv-title">Tours & Campo</div>
+      <p class="srv-desc">Viajes programados, turismo y salidas largas a los destinos más bellos de Tarija y más allá.</p>
+      <span class="srv-tag">🌄 Tarija y más allá</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     GALERÍA
+════════════════════════════ -->
+<section id="galeria" class="section-pad gallery-section">
+  <div class="reveal">
+    <div class="section-label">Nuestra flota</div>
+    <h2 class="section-title">Plus Móvil<br/><span class="accent">en acción</span></h2>
+  </div>
+
+  <div style="margin-top:2.5rem;" class="reveal">
+    <img src="https://i.postimg.cc/8kMFTYg9/FB-IMG-1776777587209.jpg"
+         alt="Plus Móvil Tarija" class="gallery-hero"/>
+  </div>
+
+  <div class="gallery-grid reveal">
+    <img src="https://i.postimg.cc/wMX3F1QC/FB-IMG-1776777594915.jpg" alt="Flota Plus Móvil"/>
+    <img src="https://i.postimg.cc/g07w0FJX/FB-IMG-1776777628513.jpg" alt="Vehículo Plus Móvil"/>
+  </div>
+
+  <div class="gallery-overlay-card reveal">
+    <img src="https://i.postimg.cc/mkmWbRLc/facebook-1776777845006-7452346422422166983.jpg" alt="Plus Móvil flota completa"/>
+    <div class="card-text">
+      <div class="section-label" style="margin-bottom:.5rem;">Nuestra promesa</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.04em;line-height:1.1;">Más de 80 vehículos<br/>listos para vos</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     QUIÉNES SOMOS
+════════════════════════════ -->
+<section id="nosotros" class="section-pad who-bg">
+  <div style="display:grid;grid-template-columns:1fr;gap:3rem;max-width:1200px;margin:0 auto;" id="who-grid">
+    <div class="reveal-left">
+      <div class="section-label">Quiénes somos</div>
+      <h2 class="section-title">Nacimos en<br/><span class="accent">Tarija.</span><br/>Crecimos<br/>con vos.</h2>
+      <p style="color:var(--gray);font-size:.95rem;line-height:1.75;margin-bottom:1.2rem;">
+        El <strong style="color:var(--gold)">25 de enero de 2016</strong>, un grupo de socios tarijeños con pasión por el transporte decidió que Tarija merecía algo mejor: un servicio de movilidad <em style="color:#fff">profesional, seguro y confiable</em> de verdad.
+      </p>
+      <p style="color:var(--gray);font-size:.9rem;line-height:1.75;">
+        Arrancamos con sueños grandes y una flota pequeña. Hoy somos <strong style="color:#fff">más de 80 unidades</strong> con conductores certificados, vehículos en perfecto estado y una operación 100% legal que nos enorgullece. Somos el aliado de hoteles, clínicas, agencias de turismo, discotecas y cientos de familias tarijeñas.
+      </p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div><div class="tl-year">2016 — Fundación</div><p class="tl-text">Nació el sueño de hacer del transporte tarijeño algo profesional de verdad.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot blue"></div>
+          <div><div class="tl-year" style="color:var(--electric)">2019 — Expansión</div><p class="tl-text">Sumamos servicios ejecutivos y alianzas con hoteles y clínicas de Tarija.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div><div class="tl-year">2025 — Hoy</div><p class="tl-text">+80 unidades, 9 años de trayectoria y la confianza de miles de tarijeños.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-right">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num counter" data-target="80" data-suffix="+">0+</div>
+          <div class="stat-lbl">Unidades activas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num counter" data-target="9" data-suffix="+">0+</div>
+          <div class="stat-lbl">Años experiencia</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">Siempre online</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Legal</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,184,32,.06);border:1px solid rgba(255,184,32,.2);border-radius:16px;">
+        <p style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">Nuestros socios corporativos</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;">
+          <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600;">🏨 Hoteles</span>
+          <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600;">🏥 Clínicas</span>
+          <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600;">✈️ Agencias de Turismo</span>
+          <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600;">🎶 Discotecas</span>
+          <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:600;">📦 Empresas Delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     MISIÓN / VISIÓN
+════════════════════════════ -->
+<section id="mision" class="section-pad mv-bg">
+  <div class="reveal" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Nuestra razón de ser</div>
+    <h2 class="section-title">Misión, Visión<br/><span class="accent">& Valores</span></h2>
+  </div>
+  <div class="mv-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="mv-card mission reveal">
+      <span class="mv-emoji">🎯</span>
+      <div class="mv-title">Misión</div>
+      <p class="mv-text">Brindar a cada persona y empresa de Tarija un servicio de transporte <strong style="color:#fff">seguro, puntual y profesional</strong>, conectando destinos con responsabilidad, calidez humana y los más altos estándares de calidad — disponibles las 24 horas, los 7 días de la semana.</p>
+    </div>
+    <div class="mv-card vision reveal">
+      <span class="mv-emoji">🚀</span>
+      <div class="mv-title">Visión</div>
+      <p class="mv-text">Ser la empresa de movilidad <strong style="color:#fff">líder e innovadora de Bolivia</strong>, reconocida por su flota moderna, su tecnología y la confianza inquebrantable de miles de clientes — expandiendo nuestros servicios más allá de las fronteras de Tarija.</p>
+    </div>
+    <div class="mv-card values reveal">
+      <span class="mv-emoji">💛</span>
+      <div class="mv-title">Valores</div>
+      <ul class="values-list">
+        <li>Confianza — 100% legales y transparentes</li>
+        <li>Seguridad — Conductores certificados</li>
+        <li>Puntualidad — Llegamos cuando prometemos</li>
+        <li>Compromiso — Con el cliente y Tarija</li>
+        <li>Excelencia — Siempre mejorando</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TESTIMONIOS
+════════════════════════════ -->
+<section class="section-pad testi-bg">
+  <div class="reveal" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">Lo que dicen de nosotros</div>
+    <h2 class="section-title">La voz de<br/><span class="accent">nuestros clientes</span></h2>
+  </div>
+  <div class="testi-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Trabajamos con Plus Móvil para el traslado de nuestros huéspedes VIP. Siempre puntuales, presentables y con vehículos impecables. Son nuestro primer contacto para todo.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">H</div>
+        <div><div class="testi-name">Hotel Los Parrales</div><div class="testi-role">Cliente corporativo</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Para nuestra agencia de turismo, Plus Móvil es sinónimo de confianza. Los tours al campo se coordinan perfectamente y los clientes siempre salen encantados.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">T</div>
+        <div><div class="testi-name">Tarija Tours & Viajes</div><div class="testi-role">Agencia de turismo</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Usamos Plus Móvil para delivery de medicamentos urgentes. Su rapidez y discreción son fundamentales en nuestra clínica. No cambiaríamos este servicio por nada.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">C</div>
+        <div><div class="testi-name">Clínica San Juan</div><div class="testi-role">Centro de salud</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CÓMO PEDIR
+════════════════════════════ -->
+<section class="section-pad how-bg">
+  <div class="reveal" style="max-width:1200px;margin:0 auto;text-align:center;">
+    <div class="section-label" style="justify-content:center;">Así de simple</div>
+    <h2 class="section-title">¿Cómo pido<br/><span class="accent">mi móvil?</span></h2>
+  </div>
+  <div class="how-steps" style="max-width:1200px;margin:0 auto;">
+    <div class="step-card reveal">
+      <div class="step-num">1</div>
+      <span class="step-icon">💬</span>
+      <div class="step-title">Escribinos</div>
+      <p class="step-text">Mandá un WhatsApp o llamanos a cualquiera de nuestros 3 números de atención, disponibles 24/7.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">2</div>
+      <span class="step-icon">📍</span>
+      <div class="step-title">Tu destino</div>
+      <p class="step-text">Indicanos dónde estás y a dónde vas. Nuestro operador confirma tu móvil en segundos.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">3</div>
+      <span class="step-icon">🚖</span>
+      <div class="step-title">¡En camino!</div>
+      <p class="step-text">Un conductor profesional y verificado llega hasta vos. Simple, rápido y 100% seguro.</p>
+    </div>
+  </div>
+  <div class="wa-buttons reveal">
+    <a href="https://wa.me/59177877727" target="_blank" class="wa-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+      77877727
+    </a>
+    <a href="https://wa.me/59164582612" target="_blank" class="wa-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+      64582612
+    </a>
+    <a href="https://wa.me/59164582611" target="_blank" class="wa-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+      64582611
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     FAQ
+════════════════════════════ -->
+<section id="faq" class="section-pad faq-bg">
+  <div style="max-width:800px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">¿Tenés dudas?</div>
+      <h2 class="section-title">Preguntas<br/><span class="accent">frecuentes</span></h2>
+      <p class="section-sub" style="margin:0 auto 0;text-align:center;">Si no encontrás tu respuesta, escribinos por WhatsApp — respondemos en minutos.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Cómo pido un móvil?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Escribinos al WhatsApp o llamanos a cualquiera de los 3 números (77877727 / 64582612 / 64582611). Indicanos tu ubicación y destino, y en minutos un conductor verificado estará en tu puerta.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Están disponibles de noche y en feriados?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, Plus Móvil opera las 24 horas del día, los 7 días de la semana, incluyendo feriados. Siempre habrá alguien disponible para atenderte sin importar la hora.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Hacen viajes fuera de Tarija?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Además de carreras dentro de Tarija, realizamos viajes programados, salidas al campo y tours turísticos a distintos destinos de la región. Consultanos con anticipación para coordinar el servicio.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Los conductores están certificados?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutamente. Todos nuestros conductores tienen TIC (Tarjeta de Identificación del Conductor) y los vehículos tienen SOAT, Tarjetas de Operación y están registrados ante GATM. Operamos 100% dentro de la ley.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Hacen delivery de paquetes?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Contamos con servicio de delivery y encomiendas dentro de Tarija. Somos aliados de hoteles, clínicas, discotecas y empresas de delivery que confían en nosotros para sus envíos diarios.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>¿Tienen servicio ejecutivo para empresas?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Nuestro servicio ejecutivo está pensado para empresas, ejecutivos y eventos corporativos. Vehículos premium, conductores formales y puntualidad garantizada. Podemos armar paquetes corporativos a medida.</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+      <a href="https://wa.me/59177877727?text=Hola%20tengo%20una%20consulta" target="_blank" class="btn-primary" style="display:inline-flex;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--navy)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+        Consultanos ya
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     RECLUTAMIENTO
+════════════════════════════ -->
+<section class="section-pad recruit-bg">
+  <div class="recruit-shine"></div>
+  <div class="recruit-content reveal">
+    <div class="section-label" style="justify-content:center;">¡Estamos creciendo!</div>
+    <h2 class="section-title">¿Querés trabajar<br/><span class="accent">con nosotros?</span></h2>
+    <p style="color:rgba(255,255,255,.7);font-size:1rem;line-height:1.7;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;">
+      Buscamos conductores comprometidos para unirse a la familia Plus Móvil. Ingresos reales, respaldo legal total y el orgullo de pertenecer a la empresa más seria de Tarija.
+    </p>
+    <div class="recruit-perks">
+      <div class="perk"><span class="perk-icon">💰</span><div class="perk-text">Buenos ingresos</div></div>
+      <div class="perk"><span class="perk-icon">🛡️</span><div class="perk-text">100% Legal</div></div>
+      <div class="perk"><span class="perk-icon">⏰</span><div class="perk-text">Horario flexible</div></div>
+      <div class="perk"><span class="perk-icon">🤝</span><div class="perk-text">Gran equipo</div></div>
+    </div>
+    <a href="https://wa.me/59169309970?text=Hola,%20me%20interesa%20trabajar%20como%20conductor%20en%20Plus%20M%C3%B3vil" target="_blank" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.2rem;">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--navy)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+      Quiero ser conductor · +591 69309970
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CONTACTO
+════════════════════════════ -->
+<section id="contacto" class="section-pad contact-bg">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-label">Encontranos</div>
+      <h2 class="section-title">Siempre cerca<br/><span class="accent">de vos</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <span class="contact-icon">🕐</span>
+        <div class="contact-title">Atención 24/7</div>
+        <p class="contact-text">Disponibles las 24 horas, los 7 días de la semana incluyendo feriados. Sin importar la hora, siempre hay alguien para atenderte.</p>
+        <div class="avail-badge"><span style="width:8px;height:8px;background:#4ADE80;border-radius:50%;display:inline-block;animation:livePulse 1.5s infinite;"></span>Ahora disponibles</div>
+      </div>
+      <div class="contact-card reveal">
+        <span class="contact-icon">📲</span>
+        <div class="contact-title">Seguinos en redes</div>
+        <a href="https://www.facebook.com/share/1Zrvve43pH/" target="_blank" class="social-link fb">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook — Plus Móvil
+        </a>
+        <a href="https://www.tiktok.com/@plusmovilvirtualtarija" target="_blank" class="social-link tt">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok — @plusmovil
+        </a>
+        <a href="https://maps.app.goo.gl/rYR9BDKgwNfm9tEE6" target="_blank" class="social-link gm">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Ver oficina en Maps
+        </a>
+      </div>
+      <div class="contact-card reveal">
+        <span class="contact-icon">💬</span>
+        <div class="contact-title">Escribinos ahora</div>
+        <p class="contact-text">Respondemos en minutos. Tu comodidad y seguridad son nuestra prioridad absoluta.</p>
+        <a href="https://wa.me/59177877727?text=Hola%20Plus%20M%C3%B3vil,%20necesito%20un%20servicio" target="_blank"
+           style="display:flex;align-items:center;justify-content:center;gap:.6rem;background:#1DB954;color:#fff;font-weight:700;font-size:.9rem;padding:1rem;border-radius:12px;text-decoration:none;margin-top:.5rem;transition:background .2s;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+          Chatear por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     FOOTER
+════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="https://i.postimg.cc/Jh56wx4j/1776778016479.png" alt="Plus Móvil" class="footer-logo"/>
+      <p class="footer-desc">El servicio de transporte más confiable de Tarija, Bolivia. Seguros, legales y siempre disponibles desde el 25 de enero de 2016.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/share/1Zrvve43pH/" target="_blank" class="footer-social-btn fb">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@plusmovilvirtualtarija" target="_blank" class="footer-social-btn tt">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+        <a href="https://maps.app.goo.gl/rYR9BDKgwNfm9tEE6" target="_blank" class="footer-social-btn gm">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegación</div>
+      <ul class="footer-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#mision">Misión & Visión</a></li>
+        <li><a href="#faq">¿Tenés dudas?</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <a href="https://wa.me/59177877727" target="_blank" class="footer-contact-item">📱 77877727</a>
+      <a href="https://wa.me/59164582612" target="_blank" class="footer-contact-item">📱 64582612</a>
+      <a href="https://wa.me/59164582611" target="_blank" class="footer-contact-item">📱 64582611</a>
+      <a href="https://maps.app.goo.gl/rYR9BDKgwNfm9tEE6" target="_blank" class="footer-contact-item">📍 Tarija, Bolivia</a>
+      <a href="https://wa.me/59169309970" target="_blank" class="footer-contact-item" style="color:var(--gold);">🚗 Conductores: 69309970</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">✓ GATM Certificado</a></li>
+        <li><a href="#">✓ NIT en Regla</a></li>
+        <li><a href="#">✓ SOAT Vigente</a></li>
+        <li><a href="#">✓ Tarjetas de Operación</a></li>
+        <li><a href="#">✓ Conductores con TIC</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">
+      © 2025 Plus Móvil — Tarija, Bolivia. Todos los derechos reservados.<br/>
+      Fundada el 25 de enero de 2016 · Operación 100% Legal
+    </p>
+    <a href="https://www.linkedin.com/in/kevin-flores-631a16189" target="_blank" class="koffyz-badge">
+      <img src="https://i.postimg.cc/PJtxhF8q/1000257036.png"
+           onerror="this.style.display='none'"
+           alt="Systemas Koffyz" class="koffyz-logo"/>
+      <div class="koffyz-text">
+        <span class="koffyz-by">Diseñado por</span>
+        <span class="koffyz-name">Systemas Koffyz</span>
+      </div>
+    </a>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/59177877727?text=Hola%20Plus%20M%C3%B3vil,%20quiero%20un%20m%C3%B3vil" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.83L.057 23.428a.5.5 0 00.609.61l5.717-1.484A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.001-1.373l-.357-.213-3.712.963.994-3.619-.233-.373A9.817 9.817 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.42 0 9.818 4.397 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script>
+// ── Desktop two-column who section ──
+(function(){
+  var g = document.getElementById('who-grid');
+  function setGrid(){
+    g.style.gridTemplateColumns = window.innerWidth >= 1024 ? '1fr 1fr' : '1fr';
+  }
+  setGrid();
+  window.addEventListener('resize', setGrid);
+})();
+
+// ── Navbar scroll ──
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ── Hamburger / mobile menu ──
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', function(){
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mob-link').forEach(function(l){
+  l.addEventListener('click', function(){
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── Custom cursor (desktop only) ──
+if(window.innerWidth > 768){
+  var dot = document.getElementById('dot');
+  var ring = document.getElementById('ring');
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform='translate('+(mx-4)+'px,'+(my-4)+'px)';
+  });
+  (function animRing(){
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.transform='translate('+(rx-18)+'px,'+(ry-18)+'px)';
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){
+      ring.style.width='52px';ring.style.height='52px';
+      ring.style.borderColor='rgba(255,184,32,.9)';
+    });
+    el.addEventListener('mouseleave',function(){
+      ring.style.width='36px';ring.style.height='36px';
+      ring.style.borderColor='rgba(255,184,32,.5)';
+    });
+  });
+}
+
+// ── Scroll Reveal ──
+var revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting) e.target.classList.add('up');
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(function(el){ revObs.observe(el); });
+
+// ── Animated Counters ──
+function animCounter(el){
+  var target=parseInt(el.dataset.target);
+  var suffix=el.dataset.suffix||'';
+  var dur=2000, step=target/(dur/16), cur=0;
+  var t=setInterval(function(){
+    cur+=step;
+    if(cur>=target){cur=target;clearInterval(t);}
+    el.textContent=Math.floor(cur)+suffix;
+  },16);
+}
+var cntObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){animCounter(e.target);cntObs.unobserve(e.target);}
+  });
+},{threshold:0.5});
+document.querySelectorAll('.counter').forEach(function(el){ cntObs.observe(el); });
+
+// ── FAQ Accordion ──
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item=btn.parentElement;
+    var isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
+    if(!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
